@@ -14,28 +14,23 @@ class MainViewController: UIViewController {
     
     @IBAction func submitCity(_ sender: UIButton) {
         guard let cityName = cityTextField.text else { return }
-        let request = URLRequest(url: URL(string: "http://api.openweathermap.org/data/2.5/weather?appid=2d2e389480d6cef60b5aa6004c417ab2&q=\(cityName)&units=metric")!)
-        let webService = WebService()
-        
-        webService.execute(request, callback: { response in
+
+        let provider = CurrentWeatherProvider()
+
+        provider.fetch(forCity: cityName, unit: TemperatureUnit.metric) { response in
             switch response {
-            case let .success(result):
-                print(result)
-                guard let main = result["main"] as? [String: Any],
-                    let tempAsDouble = main["temp"] as? Double else { return }
-                self.temperatureTextField.text = String(describing: tempAsDouble)
+            case let .success(currentWeather):
+                self.updateUI(with: currentWeather)
             case let .error(error):
                 print(error)
             }
-        })
+        }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-   
+
+    func updateUI(with weather: CurrentWeather) {
+        self.temperatureTextField.text = String(describing: weather.temperature)
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         

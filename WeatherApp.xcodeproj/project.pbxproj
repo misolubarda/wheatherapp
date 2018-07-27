@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A70504B210A2B5500F56BCA /* CurrentWeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A70504A210A2B5500F56BCA /* CurrentWeatherProvider.swift */; };
+		9A70504D210A2D1000F56BCA /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A70504C210A2D1000F56BCA /* CurrentWeather.swift */; };
 		9ABEB6FB2103396A00FF371B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABEB6FA2103396A00FF371B /* AppDelegate.swift */; };
 		9ABEB7002103396A00FF371B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ABEB6FE2103396A00FF371B /* Main.storyboard */; };
 		9ABEB7022103396B00FF371B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ABEB7012103396B00FF371B /* Assets.xcassets */; };
@@ -15,7 +17,6 @@
 		9ABEB71B2103396C00FF371B /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABEB71A2103396C00FF371B /* WeatherAppUITests.swift */; };
 		9ABEB72B21033C1300FF371B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABEB72A21033C1300FF371B /* MainViewController.swift */; };
 		9ABEB72F21033CAE00FF371B /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABEB72E21033CAE00FF371B /* WebService.swift */; };
-		9AFB9DAE21034BB4004BC0A7 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB9DAD21034BB4004BC0A7 /* Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A70504A210A2B5500F56BCA /* CurrentWeatherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherProvider.swift; sourceTree = "<group>"; };
+		9A70504C210A2D1000F56BCA /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		9ABEB6F72103396A00FF371B /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ABEB6FA2103396A00FF371B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ABEB6FF2103396A00FF371B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,7 +53,6 @@
 		9ABEB71C2103396C00FF371B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ABEB72A21033C1300FF371B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9ABEB72E21033CAE00FF371B /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
-		9AFB9DAD21034BB4004BC0A7 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				9ABEB72E21033CAE00FF371B /* WebService.swift */,
-				9AFB9DAD21034BB4004BC0A7 /* Request.swift */,
+				9A70504A210A2B5500F56BCA /* CurrentWeatherProvider.swift */,
+				9A70504C210A2D1000F56BCA /* CurrentWeather.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -278,9 +281,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AFB9DAE21034BB4004BC0A7 /* Request.swift in Sources */,
 				9ABEB72F21033CAE00FF371B /* WebService.swift in Sources */,
 				9ABEB6FB2103396A00FF371B /* AppDelegate.swift in Sources */,
+				9A70504B210A2B5500F56BCA /* CurrentWeatherProvider.swift in Sources */,
+				9A70504D210A2D1000F56BCA /* CurrentWeather.swift in Sources */,
 				9ABEB72B21033C1300FF371B /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

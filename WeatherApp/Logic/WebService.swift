@@ -9,7 +9,7 @@
 import Foundation
 
 class WebService {
-    func execute(_ request: URLRequest, callback: @escaping (Response) -> Void) {
+    func execute<T: Decodable>(_ request: URLRequest, callback: @escaping (Response<T>) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: {(data, response, error) in
             DispatchQueue.main.async { self.handleResponse(data, error: error, callback: callback) }
@@ -17,17 +17,13 @@ class WebService {
         task.resume()
     }
     
-    func handleResponse(_ data: Data?, error: Error?, callback: (Response) -> Void) {
+    func handleResponse<T: Decodable>(_ data: Data?, error: Error?, callback: (Response<T>) -> Void) {
         if let error = error {
             callback(.error(error))
         } else if let data = data  {
             do {
-                let jsonObj = try JSONSerialization.jsonObject(with: data, options: [])
-                if let result = jsonObj as? [String: Any] {
-                    callback(.success(result))
-                } else {
-                    callback(.error(WebServiceError.parsing))
-                }
+                let result = try JSONDecoder().decode(T.self, from: data)
+                callback(.success(result))
             } catch let error {
                 callback(.error(error))
             }
@@ -37,11 +33,11 @@ class WebService {
     }
 }
 
-enum Response {
-    case success([String: Any])
+enum Response<T> {
+    case success(T)
     case error(Error)
 }
 
 enum WebServiceError: Error {
-    case ambigousResponse, parsing
+    case ambigousResponse
 }

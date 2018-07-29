@@ -10,10 +10,7 @@ import Foundation
 
 class CurrentWeatherProvider {
     func fetch(forCity city: String, unit: TemperatureUnit, completion: @escaping (Response<CurrentWeather>) -> Void) {
-        let request = URLRequest(url: URL(string: "http://api.openweathermap.org/data/2.5/weather?appid=2d2e389480d6cef60b5aa6004c417ab2&q=\(city)&units=\(unit.rawValue)")!)
-
-        WebService().execute(request) { response in
-            completion(response)
-        }
+        guard let request = Request(endpoint: .currentWeather(city: city, unit: unit)).urlRequest else { return }
+        WebService().execute(request, callback: completion)
     }
 }

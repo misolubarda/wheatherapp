@@ -15,9 +15,7 @@ class MainViewController: UIViewController {
     @IBAction func submitCity(_ sender: UIButton) {
         guard let cityName = cityTextField.text else { return }
 
-        let provider = CurrentWeatherProvider()
-
-        provider.fetch(forCity: cityName, unit: TemperatureUnit.metric) { response in
+        CurrentWeatherProvider().fetch(forCity: cityName, unit: TemperatureUnit.metric) { response in
             switch response {
             case let .success(currentWeather):
                 self.updateUI(with: currentWeather)

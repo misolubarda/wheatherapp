@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9A253CD3210DD20D005ADE9C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A253CD2210DD20D005ADE9C /* Endpoint.swift */; };
 		9A253CD5210DD22F005ADE9C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A253CD4210DD22F005ADE9C /* Request.swift */; };
+		9A26059A211091110019905A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A260599211091110019905A /* Response.swift */; };
+		9A26059C211094850019905A /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A26059B211094850019905A /* EndpointTests.swift */; };
 		9A55326A21105BD200005F01 /* WeatherTodayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55326921105BD200005F01 /* WeatherTodayUseCase.swift */; };
 		9A55326C21105CD300005F01 /* WeatherToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55326B21105CD300005F01 /* WeatherToday.swift */; };
 		9A55326F21105E1200005F01 /* WeatherTodayAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55326E21105E1200005F01 /* WeatherTodayAdapter.swift */; };
@@ -47,6 +49,8 @@
 /* Begin PBXFileReference section */
 		9A253CD2210DD20D005ADE9C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		9A253CD4210DD22F005ADE9C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		9A260599211091110019905A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		9A26059B211094850019905A /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		9A55326921105BD200005F01 /* WeatherTodayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTodayUseCase.swift; sourceTree = "<group>"; };
 		9A55326B21105CD300005F01 /* WeatherToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherToday.swift; sourceTree = "<group>"; };
 		9A55326E21105E1200005F01 /* WeatherTodayAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTodayAdapter.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				9ABEB72E21033CAE00FF371B /* WebService.swift */,
+				9A260599211091110019905A /* Response.swift */,
 			);
 			path = Web;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				9ABEB70F2103396C00FF371B /* WeatherAppTests.swift */,
+				9A26059B211094850019905A /* EndpointTests.swift */,
 				9ABEB7112103396C00FF371B /* Info.plist */,
 			);
 			path = WeatherAppTests;
@@ -367,6 +373,7 @@
 				9AB17AE2210DBC760069D829 /* CurrentUvIndexProvider.swift in Sources */,
 				9AB17AEB210DBF3F0069D829 /* Coordinate.swift in Sources */,
 				9A70504B210A2B5500F56BCA /* CurrentWeatherProvider.swift in Sources */,
+				9A26059A211091110019905A /* Response.swift in Sources */,
 				9A55326C21105CD300005F01 /* WeatherToday.swift in Sources */,
 				9AB17AE7210DBE330069D829 /* CurrentUvIndex.swift in Sources */,
 				9A253CD5210DD22F005ADE9C /* Request.swift in Sources */,
@@ -381,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A26059C211094850019905A /* EndpointTests.swift in Sources */,
 				9ABEB7102103396C00FF371B /* WeatherAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

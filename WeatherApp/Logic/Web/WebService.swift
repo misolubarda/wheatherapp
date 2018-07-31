@@ -44,11 +44,6 @@ class WebService {
     }
 }
 
-enum Response<T> {
-    case success(T)
-    case error(Error)
-}
-
 enum WebServiceError: Error {
     case ambigousResponse, serviceError(errorObject: Any?)
 }

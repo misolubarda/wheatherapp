@@ -24,7 +24,7 @@ enum Endpoint {
     var inputParameters: String {
         switch self {
         case let .currentWeather(city: city, unit: unit):
-            return "&city=\(city)&units=\(unit.rawValue)"
+            return "&q=\(city)&units=\(unit.rawValue)"
         case let .currentUvIndex(coordinate: coordinate):
             return "&lat=\(coordinate.lat)&lon=\(coordinate.long)"
         }

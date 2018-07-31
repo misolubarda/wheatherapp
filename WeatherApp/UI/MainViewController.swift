@@ -16,26 +16,19 @@ class MainViewController: UIViewController {
     @IBAction func submitCity(_ sender: UIButton) {
         guard let cityName = cityTextField.text else { return }
 
-        CurrentWeatherProvider().fetch(forCity: cityName, unit: TemperatureUnit.metric) { response in
+        WeatherTodayUseCase.execute(city: cityName) { response in
             switch response {
-            case let .success(currentWeather):
-                CurrentUvIndexProvider().fetch(for: currentWeather.coordinate) { response in
-                    switch response {
-                    case let .success(currentUvIndex):
-                        self.updateUI(with: currentWeather, uvIndex: currentUvIndex)
-                    case let .error(error):
-                        print(error)
-                    }
-                }
+            case let .success(weatherToday):
+                self.updateUI(with: weatherToday)
             case let .error(error):
                 print(error)
             }
         }
     }
 
-    func updateUI(with weather: CurrentWeather, uvIndex: CurrentUvIndex) {
-        self.temperatureTextField.text = String(describing: weather.temperature)
-        self.uvIndexTextField.text = String(describing: uvIndex.value)
+    func updateUI(with weatherToday: WeatherToday) {
+        self.temperatureTextField.text = String(describing: weatherToday.temperature)
+        self.uvIndexTextField.text = String(describing: weatherToday.uvIndex)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -44,6 +37,3 @@ class MainViewController: UIViewController {
         view.endEditing(false)
     }
 }
-
-
-

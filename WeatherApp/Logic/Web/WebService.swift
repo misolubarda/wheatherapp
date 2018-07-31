@@ -12,12 +12,14 @@ class WebService {
     func execute<T: Decodable>(_ request: URLRequest, callback: @escaping (Response<T>) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: {(data, response, error) in
-            DispatchQueue.main.async { self.handleResponse(data, error: error, callback: callback) }
+            DispatchQueue.main.async {
+                self.handleResponse(data, httpResponse: response as? HTTPURLResponse, error: error, callback: callback)
+            }
         })
         task.resume()
     }
     
-    func handleResponse<T: Decodable>(_ data: Data?, error: Error?, callback: (Response<T>) -> Void) {
+    func handleResponse<T: Decodable>(_ data: Data?, httpResponse: HTTPURLResponse?, error: Error?, callback: (Response<T>) -> Void) {
         if let error = error {
             callback(.error(error))
         } else if let data = data  {
@@ -25,10 +27,19 @@ class WebService {
                 let result = try JSONDecoder().decode(T.self, from: data)
                 callback(.success(result))
             } catch let error {
-                callback(.error(error))
+                handleError(error, data: data, httpResponse: httpResponse, callback: callback)
             }
         } else {
             callback(.error(WebServiceError.ambigousResponse))
+        }
+    }
+
+    func handleError<T: Decodable>(_ error: Error, data: Data, httpResponse: HTTPURLResponse?, callback: (Response<T>) -> Void) {
+        if httpResponse?.statusCode != 200 {
+            let errorObject = try? JSONSerialization.jsonObject(with: data, options: [])
+            callback(.error(WebServiceError.serviceError(errorObject: errorObject)))
+        } else {
+            callback(.error(error))
         }
     }
 }
@@ -39,5 +50,5 @@ enum Response<T> {
 }
 
 enum WebServiceError: Error {
-    case ambigousResponse
+    case ambigousResponse, serviceError(errorObject: Any?)
 }

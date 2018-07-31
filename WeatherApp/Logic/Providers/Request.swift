@@ -9,7 +9,7 @@
 import Foundation
 
 class Request {
-    let baseUrl = URL(string: "http://api.openweathermap.org/data/2.5")
+    let baseUrlString = "http://api.openweathermap.org/data/2.5"
     let authParameters = "?" + "appid=2d2e389480d6cef60b5aa6004c417ab2"
     let endpoint: Endpoint
 
@@ -18,7 +18,8 @@ class Request {
     }
 
     var urlRequest: URLRequest? {
-        guard let url = baseUrl?.appendingPathComponent(authParameters + endpoint.inputParameters) else { return nil }
+        let urlString = baseUrlString + "/" + endpoint.path + authParameters + endpoint.inputParameters
+        guard let url = URL(string: urlString) else { return nil }
         return URLRequest(url: url)
     }
 }

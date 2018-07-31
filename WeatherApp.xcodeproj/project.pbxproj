@@ -12,6 +12,8 @@
 		9A26059A211091110019905A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A260599211091110019905A /* Response.swift */; };
 		9A26059C211094850019905A /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A26059B211094850019905A /* EndpointTests.swift */; };
 		9A26059E2110A6C50019905A /* XCTestCaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A26059D2110A6C50019905A /* XCTestCaseExtensions.swift */; };
+		9A2605A02110B5E10019905A /* WebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A26059F2110B5E10019905A /* WebServiceTests.swift */; };
+		9A2605A42110C43A0019905A /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2605A32110C43A0019905A /* URLSessionMock.swift */; };
 		9A55326A21105BD200005F01 /* WeatherTodayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55326921105BD200005F01 /* WeatherTodayUseCase.swift */; };
 		9A55326C21105CD300005F01 /* WeatherToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55326B21105CD300005F01 /* WeatherToday.swift */; };
 		9A55326F21105E1200005F01 /* WeatherTodayAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A55326E21105E1200005F01 /* WeatherTodayAdapter.swift */; };
@@ -52,6 +54,8 @@
 		9A260599211091110019905A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		9A26059B211094850019905A /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		9A26059D2110A6C50019905A /* XCTestCaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtensions.swift; sourceTree = "<group>"; };
+		9A26059F2110B5E10019905A /* WebServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceTests.swift; sourceTree = "<group>"; };
+		9A2605A32110C43A0019905A /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 		9A55326921105BD200005F01 /* WeatherTodayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTodayUseCase.swift; sourceTree = "<group>"; };
 		9A55326B21105CD300005F01 /* WeatherToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherToday.swift; sourceTree = "<group>"; };
 		9A55326E21105E1200005F01 /* WeatherTodayAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTodayAdapter.swift; sourceTree = "<group>"; };
@@ -100,6 +104,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A2605A22110C4300019905A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				9A2605A32110C43A0019905A /* URLSessionMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		9A55326821105B7700005F01 /* Use cases */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +209,9 @@
 		9ABEB70E2103396C00FF371B /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				9A2605A22110C4300019905A /* Mocks */,
 				9A26059B211094850019905A /* EndpointTests.swift */,
+				9A26059F2110B5E10019905A /* WebServiceTests.swift */,
 				9ABEB7112103396C00FF371B /* Info.plist */,
 			);
 			path = WeatherAppTests;
@@ -388,6 +402,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A2605A42110C43A0019905A /* URLSessionMock.swift in Sources */,
+				9A2605A02110B5E10019905A /* WebServiceTests.swift in Sources */,
 				9A26059C211094850019905A /* EndpointTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

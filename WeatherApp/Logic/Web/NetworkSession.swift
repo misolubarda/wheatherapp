@@ -14,7 +14,11 @@ protocol NetworkSession {
 
 class DataNetworkSession: NetworkSession {
     func perform(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        let task = URLSession.shared.dataTask(with: request, completionHandler: completionHandler)
+        let task = URLSession.shared.dataTask(with: request) { data, request, error in
+            DispatchQueue.main.async {
+                completionHandler(data, request, error)
+            }
+        }
         task.resume()
     }
 }

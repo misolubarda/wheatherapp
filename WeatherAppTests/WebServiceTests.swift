@@ -21,7 +21,6 @@ class WebServiceTests: XCTestCase {
 
     func test_execute_whenResultIsValid_returnsResultInCallback() {
         var webServiceResult: ResultFake?
-        let resultExpectation = expectation(description: "Result")
 
         webService.execute(requestFake) { (response: Response<ResultFake>) in
             switch response {
@@ -30,10 +29,7 @@ class WebServiceTests: XCTestCase {
             case let .error(error):
                 print(error)
             }
-            resultExpectation.fulfill()
         }
-
-        waitForExpectations(timeout: 5, handler: nil)
 
         XCTAssertEqual(webServiceResult!, expectedResult)
     }

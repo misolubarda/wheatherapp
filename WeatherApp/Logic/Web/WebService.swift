@@ -11,17 +11,16 @@ import Foundation
 class WebService {
     private let session: NetworkSession
 
-    init(urlSession: NetworkSession) {
-        self.session = urlSession
+    init(session: NetworkSession) {
+        self.session = session
     }
 
     func execute<T: Decodable>(_ request: URLRequest, callback: @escaping (Response<T>) -> Void) {
-        let task = session.dataTask(with: request, completionHandler: {(data, response, error) in
+        session.perform(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 self.handleResponse(data, httpResponse: response as? HTTPURLResponse, error: error, callback: callback)
             }
-        })
-        task.resume()
+        }
     }
     
     private func handleResponse<T: Decodable>(_ data: Data?, httpResponse: HTTPURLResponse?, error: Error?, callback: (Response<T>) -> Void) {

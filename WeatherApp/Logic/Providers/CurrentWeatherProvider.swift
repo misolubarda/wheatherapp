@@ -11,6 +11,6 @@ import Foundation
 class CurrentWeatherProvider {
     func fetch(forCity city: String, unit: TemperatureUnit, completion: @escaping (Response<CurrentWeather>) -> Void) {
         guard let request = Request(endpoint: .currentWeather(city: city, unit: unit)).urlRequest else { return }
-        WebService(urlSession: URLSession.shared).execute(request, callback: completion)
+        WebService(session: DataNetworkSession()).execute(request, callback: completion)
     }
 }

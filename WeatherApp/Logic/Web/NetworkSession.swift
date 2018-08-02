@@ -9,7 +9,12 @@
 import Foundation
 
 protocol NetworkSession {
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+    func perform(with request: URLRequest, completionHandler: @escaping (_ data: Data?, _ httpResponse: URLResponse?, _ error: Error?) -> Void)
 }
 
-extension URLSession: NetworkSession {}
+class DataNetworkSession: NetworkSession {
+    func perform(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: request, completionHandler: completionHandler)
+        task.resume()
+    }
+}

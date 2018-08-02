@@ -11,6 +11,6 @@ import Foundation
 class CurrentUvIndexProvider {
     func fetch(for coordinate: Coordinate, completion: @escaping (Response<CurrentUvIndex>) -> Void) {
         guard let request = Request(endpoint: .currentUvIndex(coordinate: coordinate)).urlRequest else { return }
-        WebService(urlSession: URLSession.shared).execute(request, callback: completion)
+        WebService(session: DataNetworkSession()).execute(request, callback: completion)
     }
 }

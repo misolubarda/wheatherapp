@@ -12,7 +12,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var temperatureTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var uvIndexTextField: UITextField!
-    
+    @IBOutlet weak var maxTempTextField: UITextField!
+    @IBOutlet weak var minTempTextField: UITextField!
+    @IBOutlet weak var humidityTextField: UITextField!
+
+
     @IBAction func submitCity(_ sender: UIButton) {
         guard let cityName = cityTextField.text else { return }
 

@@ -9,9 +9,9 @@
 import Foundation
 
 class WebService {
-    let session: URLSession
+    private let session: NetworkSession
 
-    init(urlSession: URLSession) {
+    init(urlSession: NetworkSession) {
         self.session = urlSession
     }
 

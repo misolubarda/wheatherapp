@@ -15,8 +15,8 @@ class WebServiceTests: XCTestCase {
     let requestFake = URLRequest(url: URL(string: "http://www.google.com")!)
 
     override func setUp() {
-        let sessionMock = URLSessionMock(result: expectedResult)
-        webService = WebService(urlSession: sessionMock)
+        let sessionFake = NetworkSessionFake(result: expectedResult)
+        webService = WebService(urlSession: sessionFake)
     }
 
     func test_execute_whenResultIsValid_returnsResultInCallback() {
@@ -36,5 +36,18 @@ class WebServiceTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
 
         XCTAssertEqual(webServiceResult!, expectedResult)
+    }
+}
+
+private class NetworkSessionFake: NetworkSession {
+    private let dataTaskMock: URLSessionDataTaskMock
+
+    init(result: ResultFake) {
+        dataTaskMock = URLSessionDataTaskMock(result: result)
+    }
+
+    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        dataTaskMock.completionHandler = completionHandler
+        return dataTaskMock
     }
 }

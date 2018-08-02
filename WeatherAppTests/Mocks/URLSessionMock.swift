@@ -8,21 +8,7 @@
 
 import Foundation
 
-class URLSessionMock: URLSession {
-    let result: ResultFake
-
-    init(result: ResultFake) {
-        self.result = result
-    }
-
-    override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        let dataTaskMock = URLSessionDataTaskMock(result: result)
-        dataTaskMock.completionHandler = completionHandler
-        return dataTaskMock
-    }
-}
-
-private class URLSessionDataTaskMock: URLSessionDataTask {
+class URLSessionDataTaskMock: URLSessionDataTask {
     typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
     var completionHandler: CompletionHandler?
     let result: ResultFake

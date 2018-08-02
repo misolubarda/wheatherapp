@@ -29,6 +29,7 @@
 		9ABEB71B2103396C00FF371B /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABEB71A2103396C00FF371B /* WeatherAppUITests.swift */; };
 		9ABEB72B21033C1300FF371B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABEB72A21033C1300FF371B /* MainViewController.swift */; };
 		9ABEB72F21033CAE00FF371B /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABEB72E21033CAE00FF371B /* WebService.swift */; };
+		9AC0396A21132817005D4D3F /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC0396921132817005D4D3F /* NetworkSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		9ABEB71C2103396C00FF371B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ABEB72A21033C1300FF371B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9ABEB72E21033CAE00FF371B /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		9AC0396921132817005D4D3F /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		9AB17AE5210DBDEB0069D829 /* Web */ = {
 			isa = PBXGroup;
 			children = (
+				9AC0396921132817005D4D3F /* NetworkSession.swift */,
 				9ABEB72E21033CAE00FF371B /* WebService.swift */,
 				9A260599211091110019905A /* Response.swift */,
 			);
@@ -387,6 +390,7 @@
 				9AB17AE2210DBC760069D829 /* CurrentUvIndexProvider.swift in Sources */,
 				9AB17AEB210DBF3F0069D829 /* Coordinate.swift in Sources */,
 				9A70504B210A2B5500F56BCA /* CurrentWeatherProvider.swift in Sources */,
+				9AC0396A21132817005D4D3F /* NetworkSession.swift in Sources */,
 				9A26059A211091110019905A /* Response.swift in Sources */,
 				9A55326C21105CD300005F01 /* WeatherToday.swift in Sources */,
 				9AB17AE7210DBE330069D829 /* CurrentUvIndex.swift in Sources */,

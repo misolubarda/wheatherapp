@@ -10,14 +10,16 @@ import Foundation
 @testable import WeatherApp
 
 class NetworkSessionFake: NetworkSession {
-    let resultFake: ResultFake
+    let resultFake: ResultFake?
+    let error: Error?
 
-    init(resultFake: ResultFake) {
+    init(resultFake: ResultFake?, error: Error?) {
         self.resultFake = resultFake
+        self.error = error
     }
 
     func perform(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        let data = try! JSONEncoder().encode(resultFake)
-        completionHandler(data, nil, nil)
+        let data = try? JSONEncoder().encode(resultFake)
+        completionHandler(data, nil, error)
     }
 }

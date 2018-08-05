@@ -30,7 +30,3 @@ struct CurrentWeather: Decodable {
         coordinate = try container.decode(Coordinate.self, forKey: .coordinate)
     }
 }
-
-enum TemperatureUnit: String {
-    case metric, imperial, kelvin
-}

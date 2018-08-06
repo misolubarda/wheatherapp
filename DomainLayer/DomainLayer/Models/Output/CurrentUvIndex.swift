@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct CurrentUvIndex: Decodable {
+public struct CurrentUvIndex: Decodable {
     let value: Double
 }

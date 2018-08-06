@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DomainLayer
 
 class WebService {
     private let session: NetworkSession

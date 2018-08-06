@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import DomainLayer
 
-class CurrentWeatherProvider {
-    func fetch(forCity city: String, unit: TemperatureUnit, completion: @escaping (Response<CurrentWeather>) -> Void) {
+public class CurrentWeatherProvider: WeatherProvider {
+    public init() {}
+
+    public func fetch(forCity city: String, unit: TemperatureUnit, completion: @escaping (Response<CurrentWeather>) -> Void) {
         guard let request = Request(endpoint: .currentWeather(city: city, unit: unit)).urlRequest else { return }
         WebService(session: DataNetworkSession()).execute(request, callback: completion)
     }

@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Coordinate: Decodable {
+public struct Coordinate: Decodable {
     enum CodingKeys: String, CodingKey {
         case lat
         case long = "lon"
     }
 
-    let lat: Double
-    let long: Double
+    public let lat: Double
+    public let long: Double
 }

@@ -8,12 +8,20 @@
 
 import Foundation
 
-class WeatherTodayUseCase {
-    static func execute(city: String, completion: @escaping (Response<WeatherToday>) -> Void) {
-        CurrentWeatherProvider().fetch(forCity: city, unit: .metric) { response in
+public class WeatherTodayUseCase {
+    private let weatherProvider: WeatherProvider
+    private let uvIndexProvider: UvIndexProvider
+
+    public init(weatherProvider: WeatherProvider, uvIndexProvider: UvIndexProvider) {
+        self.weatherProvider = weatherProvider
+        self.uvIndexProvider = uvIndexProvider
+    }
+
+    public func execute(city: String, completion: @escaping (Response<WeatherToday>) -> Void) {
+        weatherProvider.fetch(forCity: city, unit: .metric) { response in
             switch response {
             case let .success(currentWeather):
-                CurrentUvIndexProvider().fetch(for: currentWeather.coordinate) { response in
+                self.uvIndexProvider.fetch(for: currentWeather.coordinate) { response in
                     switch response {
                     case let .success(currentUvIndex):
                         let weatherToday = WeatherTodayAdapter.getWeatherToday(from: currentWeather, currentUvIndex: currentUvIndex)

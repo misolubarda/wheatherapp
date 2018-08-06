@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum TemperatureUnit: String {
+public enum TemperatureUnit: String {
     case metric, imperial, kelvin
 }

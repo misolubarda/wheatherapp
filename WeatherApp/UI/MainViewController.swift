@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import DomainLayer
+import DataLayer
 
 class MainViewController: UIViewController {
     @IBOutlet weak var temperatureTextField: UITextField!
@@ -20,7 +22,12 @@ class MainViewController: UIViewController {
     @IBAction func submitCity(_ sender: UIButton) {
         guard let cityName = cityTextField.text else { return }
 
-        WeatherTodayUseCase.execute(city: cityName) { response in
+
+        let currentWeatherProvider = CurrentWeatherProvider()
+        let currentUvIndexProvider = CurrentUvIndexProvider()
+        let weatherTodayUseCase = WeatherTodayUseCase(weatherProvider: currentWeatherProvider, uvIndexProvider: currentUvIndexProvider)
+
+        weatherTodayUseCase.execute(city: cityName) { response in
             switch response {
             case let .success(weatherToday):
                 self.updateUI(with: weatherToday)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CurrentWeather: Decodable {
+public struct CurrentWeather: Decodable {
     enum CodingKeys: String, CodingKey {
         case main
         case city = "name"
@@ -23,7 +23,7 @@ struct CurrentWeather: Decodable {
     let coordinate: Coordinate
     let temperature: Double
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         city = try container.decode(String.self, forKey: .city)
         temperature = try container.decode(Main.self, forKey: .main).temp

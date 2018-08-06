@@ -1,5 +1,5 @@
 //
-//  Response.swift
+//  WeatherToday.swift
 //  WeatherApp
 //
 //  Created by Lubarda, Miso on 7/31/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Response<T> {
-    case success(T)
-    case error(Error)
+public struct WeatherToday {
+    public let temperature: Double
+    public let uvIndex: Double
 }

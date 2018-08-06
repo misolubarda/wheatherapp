@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DomainLayer
 
 enum Endpoint {
     case currentWeather(city: String, unit: TemperatureUnit)

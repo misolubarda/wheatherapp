@@ -10,10 +10,14 @@ import Foundation
 import DomainLayer
 
 public class CurrentUvIndexProvider: UvIndexProvider {
-    public init() {}
+    private let webService: WebService
+
+    public init() {
+        self.webService = WebService(session: DataNetworkSession())
+    }
 
     public func fetch(for coordinate: Coordinate, completion: @escaping (Response<CurrentUvIndex>) -> Void) {
         guard let request = Request(endpoint: .currentUvIndex(coordinate: coordinate)).urlRequest else { return }
-        WebService(session: DataNetworkSession()).execute(request, callback: completion)
+        webService.execute(request, callback: completion)
     }
 }

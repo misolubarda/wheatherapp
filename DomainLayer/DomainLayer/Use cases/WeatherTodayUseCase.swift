@@ -18,10 +18,10 @@ public class WeatherTodayUseCase {
     }
 
     public func execute(city: String, completion: @escaping (Response<WeatherToday>) -> Void) {
-        weatherProvider.fetch(forCity: city, unit: .metric) { response in
+        weatherProvider.fetch(forCity: city, unit: .metric) { [weak self] response in
             switch response {
             case let .success(currentWeather):
-                self.fetchUvIndex(currentWeather: currentWeather, completion: completion)
+                self?.fetchUvIndex(currentWeather: currentWeather, completion: completion)
             case let .error(error):
                 completion(.error(error))
             }

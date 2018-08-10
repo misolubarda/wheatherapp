@@ -10,10 +10,14 @@ import Foundation
 import DomainLayer
 
 public class CurrentWeatherProvider: WeatherProvider {
-    public init() {}
+    private let webService: WebService
+
+    public init() {
+        self.webService = WebService(session: DataNetworkSession())
+    }
 
     public func fetch(forCity city: String, unit: TemperatureUnit, completion: @escaping (Response<CurrentWeather>) -> Void) {
         guard let request = Request(endpoint: .currentWeather(city: city, unit: unit)).urlRequest else { return }
-        WebService(session: DataNetworkSession()).execute(request, callback: completion)
+        webService.execute(request, callback: completion)
     }
 }

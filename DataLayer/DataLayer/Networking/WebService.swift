@@ -17,8 +17,8 @@ class WebService {
     }
 
     func execute<T: Decodable>(_ request: URLRequest, callback: @escaping (Response<T>) -> Void) {
-        session.perform(with: request) { (data, response, error) in
-            self.handleResponse(data, httpResponse: response as? HTTPURLResponse, error: error, callback: callback)
+        session.perform(with: request) { [weak self] (data, response, error) in
+            self?.handleResponse(data, httpResponse: response as? HTTPURLResponse, error: error, callback: callback)
         }
     }
     

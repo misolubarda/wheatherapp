@@ -8,7 +8,6 @@
 
 import UIKit
 import DomainLayer
-import DataLayer
 
 class MainViewController: UIViewController {
     @IBOutlet weak var temperatureTextField: UITextField!
@@ -18,14 +17,19 @@ class MainViewController: UIViewController {
     @IBOutlet weak var minTempTextField: UITextField!
     @IBOutlet weak var humidityTextField: UITextField!
 
+    private let weatherTodayUseCase: WeatherTodayUseCase
+
+    init(weatherTodayUseCase: WeatherTodayUseCase) {
+        self.weatherTodayUseCase = weatherTodayUseCase
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     @IBAction func submitCity(_ sender: UIButton) {
         guard let cityName = cityTextField.text else { return }
-
-
-        let currentWeatherProvider = CurrentWeatherProvider()
-        let currentUvIndexProvider = CurrentUvIndexProvider()
-        let weatherTodayUseCase = WeatherTodayUseCase(weatherProvider: currentWeatherProvider, uvIndexProvider: currentUvIndexProvider)
 
         weatherTodayUseCase.execute(city: cityName) { response in
             switch response {

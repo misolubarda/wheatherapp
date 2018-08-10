@@ -21,15 +21,19 @@ public class WeatherTodayUseCase {
         weatherProvider.fetch(forCity: city, unit: .metric) { response in
             switch response {
             case let .success(currentWeather):
-                self.uvIndexProvider.fetch(for: currentWeather.coordinate) { response in
-                    switch response {
-                    case let .success(currentUvIndex):
-                        let weatherToday = WeatherTodayAdapter.getWeatherToday(from: currentWeather, currentUvIndex: currentUvIndex)
-                        completion(.success(weatherToday))
-                    case let .error(error):
-                        completion(.error(error))
-                    }
-                }
+                self.fetchUvIndex(currentWeather: currentWeather, completion: completion)
+            case let .error(error):
+                completion(.error(error))
+            }
+        }
+    }
+
+    private func fetchUvIndex(currentWeather: CurrentWeather, completion: @escaping (Response<WeatherToday>) -> Void) {
+        self.uvIndexProvider.fetch(for: currentWeather.coordinate) { response in
+            switch response {
+            case let .success(currentUvIndex):
+                let weatherToday = WeatherTodayAdapter.getWeatherToday(from: currentWeather, currentUvIndex: currentUvIndex)
+                completion(.success(weatherToday))
             case let .error(error):
                 completion(.error(error))
             }

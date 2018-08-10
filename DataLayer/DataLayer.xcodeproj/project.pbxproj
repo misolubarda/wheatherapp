@@ -85,7 +85,8 @@
 		9AB82F652118A61F00DF359A /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				9AB82F7D2118A6F700DF359A /* Logic */,
+				9AB82F7E2118A6F700DF359A /* Networking */,
+				9AB82F812118A6F700DF359A /* Providers */,
 				9AB82F672118A61F00DF359A /* Info.plist */,
 			);
 			path = DataLayer;
@@ -100,22 +101,13 @@
 			path = DataLayerTests;
 			sourceTree = "<group>";
 		};
-		9AB82F7D2118A6F700DF359A /* Logic */ = {
-			isa = PBXGroup;
-			children = (
-				9AB82F7E2118A6F700DF359A /* Web */,
-				9AB82F812118A6F700DF359A /* Providers */,
-			);
-			path = Logic;
-			sourceTree = "<group>";
-		};
-		9AB82F7E2118A6F700DF359A /* Web */ = {
+		9AB82F7E2118A6F700DF359A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				9AB82F7F2118A6F700DF359A /* NetworkSession.swift */,
 				9AB82F802118A6F700DF359A /* WebService.swift */,
 			);
-			path = Web;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		9AB82F812118A6F700DF359A /* Providers */ = {

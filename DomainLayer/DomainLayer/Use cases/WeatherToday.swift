@@ -11,4 +11,7 @@ import Foundation
 public struct WeatherToday {
     public let temperature: Double
     public let uvIndex: Double
+    public let humidity: Double
+    public let minTemp: Double
+    public let maxTemp: Double
 }

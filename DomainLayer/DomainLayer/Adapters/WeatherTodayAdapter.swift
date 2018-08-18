@@ -10,6 +10,6 @@ import Foundation
 
 class WeatherTodayAdapter {
     static func getWeatherToday(from currentWeather: CurrentWeather, currentUvIndex: CurrentUvIndex) -> WeatherToday {
-        return WeatherToday(temperature: currentWeather.temperature, uvIndex: currentUvIndex.value)
+        return WeatherToday(temperature: currentWeather.temperature, uvIndex: currentUvIndex.value, humidity: currentWeather.humidity , minTemp: currentWeather.minTemp , maxTemp: currentWeather.maxTemp)
     }
 }

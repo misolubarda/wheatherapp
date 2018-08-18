@@ -44,6 +44,9 @@ class MainViewController: UIViewController {
     func updateUI(with weatherToday: WeatherToday) {
         self.temperatureTextField.text = String(describing: weatherToday.temperature)
         self.uvIndexTextField.text = String(describing: weatherToday.uvIndex)
+        self.humidityTextField.text = String(describing: weatherToday.humidity)
+        self.minTempTextField.text = String(describing: weatherToday.minTemp)
+        self.maxTempTextField.text = String(describing: weatherToday.maxTemp)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

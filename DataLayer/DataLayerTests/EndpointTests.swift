@@ -7,7 +7,8 @@
 //
 
 import XCTest
-@testable import WeatherApp
+@testable import DataLayer
+@testable import DomainLayer
 
 class EndpointTests: XCTestCase {
     func test_path_whenCurrentWeather_returnsWeather() {

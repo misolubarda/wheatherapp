@@ -7,7 +7,8 @@
 //
 
 import XCTest
-@testable import WeatherApp
+@testable import DataLayer
+import DomainLayer
 
 class WebServiceTests: XCTestCase {
     let expectedResult = ResultFake(key: "blabla")

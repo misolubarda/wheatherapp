@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import WeatherApp
+@testable import DataLayer
 
 class NetworkSessionFake: NetworkSession {
     let resultFake: ResultFake?

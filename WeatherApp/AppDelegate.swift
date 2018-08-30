@@ -15,8 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let useCase = WeatherTodayUseCase(weatherProvider: CurrentWeatherProvider(), uvIndexProvider: CurrentUvIndexProvider())
-        let mainViewController = MainViewController(weatherTodayUseCase: useCase)
+        let weatherUseCase = WeatherTodayUseCase(weatherProvider: CurrentWeatherProvider(), uvIndexProvider: CurrentUvIndexProvider())
+        let forecastUseCase = Forecast5DayUseCase(provider: OWMTemperatureForecast())
+        let mainViewController = MainViewController(weatherTodayUseCase: weatherUseCase, forecastUseCase: forecastUseCase)
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = mainViewController

@@ -17,10 +17,14 @@ class MainViewController: UIViewController {
     @IBOutlet weak var minTempTextField: UITextField!
     @IBOutlet weak var humidityTextField: UITextField!
 
-    private let weatherTodayUseCase: WeatherTodayUseCase
+    @IBOutlet weak var barChartView: BarChartView!
 
-    init(weatherTodayUseCase: WeatherTodayUseCase) {
+    private let weatherTodayUseCase: WeatherTodayUseCase
+    private let forecastUseCase: Forecast5DayUseCase
+
+    init(weatherTodayUseCase: WeatherTodayUseCase, forecastUseCase: Forecast5DayUseCase) {
         self.weatherTodayUseCase = weatherTodayUseCase
+        self.forecastUseCase = forecastUseCase
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -31,10 +35,19 @@ class MainViewController: UIViewController {
     @IBAction func submitCity(_ sender: UIButton) {
         guard let cityName = cityTextField.text else { return }
 
-        weatherTodayUseCase.execute(city: cityName) { response in
+        weatherTodayUseCase.execute(city: cityName) { [weak self] response in
             switch response {
             case let .success(weatherToday):
-                self.updateUI(with: weatherToday)
+                self?.updateUI(with: weatherToday)
+            case let .error(error):
+                print(error)
+            }
+        }
+
+        forecastUseCase.execute(city: cityName) { [weak self] response in
+            switch response {
+            case let .success(forecast):
+                self?.barChartView.update(with: forecast.temperatures)
             case let .error(error):
                 print(error)
             }

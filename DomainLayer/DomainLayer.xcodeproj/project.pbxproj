@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A81001C21384ACC001520DE /* TemperatureForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A81001B21384ACC001520DE /* TemperatureForecast.swift */; };
+		9A81001E2138509B001520DE /* TemperatureForecastProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A81001D2138509B001520DE /* TemperatureForecastProvider.swift */; };
+		9A810022213852EC001520DE /* Forecast5DayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A810021213852EC001520DE /* Forecast5DayUseCase.swift */; };
+		9A8100242138536D001520DE /* Forecast5Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8100232138536D001520DE /* Forecast5Day.swift */; };
 		9AB82F232118A20E00DF359A /* DomainLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB82F192118A20E00DF359A /* DomainLayer.framework */; };
 		9AB82F282118A20E00DF359A /* DomainLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB82F272118A20E00DF359A /* DomainLayerTests.swift */; };
 		9AB82F4B2118A23600DF359A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB82F372118A23600DF359A /* Response.swift */; };
@@ -32,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A81001B21384ACC001520DE /* TemperatureForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureForecast.swift; sourceTree = "<group>"; };
+		9A81001D2138509B001520DE /* TemperatureForecastProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureForecastProvider.swift; sourceTree = "<group>"; };
+		9A810021213852EC001520DE /* Forecast5DayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast5DayUseCase.swift; sourceTree = "<group>"; };
+		9A8100232138536D001520DE /* Forecast5Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast5Day.swift; sourceTree = "<group>"; };
 		9AB82F192118A20E00DF359A /* DomainLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DomainLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB82F1D2118A20E00DF359A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AB82F222118A20E00DF359A /* DomainLayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainLayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +128,8 @@
 			children = (
 				9AB82F472118A23600DF359A /* WeatherTodayUseCase.swift */,
 				9AB82F482118A23600DF359A /* WeatherToday.swift */,
+				9A810021213852EC001520DE /* Forecast5DayUseCase.swift */,
+				9A8100232138536D001520DE /* Forecast5Day.swift */,
 			);
 			path = "Use cases";
 			sourceTree = "<group>";
@@ -129,6 +139,7 @@
 			children = (
 				9AB82F982118A7C300DF359A /* WeatherProvider.swift */,
 				9AB82FA62118A8E400DF359A /* UvIndexProvider.swift */,
+				9A81001D2138509B001520DE /* TemperatureForecastProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -157,6 +168,7 @@
 				9AB82F372118A23600DF359A /* Response.swift */,
 				9AB82FA02118A8B100DF359A /* CurrentWeather.swift */,
 				9AB82FA12118A8B100DF359A /* CurrentUvIndex.swift */,
+				9A81001B21384ACC001520DE /* TemperatureForecast.swift */,
 			);
 			path = Output;
 			sourceTree = "<group>";
@@ -268,12 +280,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A81001E2138509B001520DE /* TemperatureForecastProvider.swift in Sources */,
 				9AB82F542118A23600DF359A /* WeatherTodayAdapter.swift in Sources */,
 				9AB82F552118A23600DF359A /* WeatherTodayUseCase.swift in Sources */,
 				9AB82FA72118A8E400DF359A /* UvIndexProvider.swift in Sources */,
+				9A81001C21384ACC001520DE /* TemperatureForecast.swift in Sources */,
+				9A810022213852EC001520DE /* Forecast5DayUseCase.swift in Sources */,
 				9AB82FA42118A8B100DF359A /* CurrentWeather.swift in Sources */,
 				9AB82F4B2118A23600DF359A /* Response.swift in Sources */,
 				9AB82F562118A23600DF359A /* WeatherToday.swift in Sources */,
+				9A8100242138536D001520DE /* Forecast5Day.swift in Sources */,
 				9AB82F992118A7C300DF359A /* WeatherProvider.swift in Sources */,
 				9AB82FA22118A8B100DF359A /* Coordinate.swift in Sources */,
 				9AB82FA52118A8B100DF359A /* CurrentUvIndex.swift in Sources */,

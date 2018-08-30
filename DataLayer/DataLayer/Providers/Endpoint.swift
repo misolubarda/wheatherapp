@@ -11,6 +11,7 @@ import DomainLayer
 
 enum Endpoint {
     case currentWeather(city: String, unit: TemperatureUnit)
+    case temperatureForecast(city: String, unit: TemperatureUnit)
     case currentUvIndex(coordinate: Coordinate)
 
     var path: String {
@@ -19,6 +20,8 @@ enum Endpoint {
             return "weather"
         case .currentUvIndex:
             return "uvi"
+        case .temperatureForecast:
+            return "forecast"
         }
     }
 
@@ -28,6 +31,8 @@ enum Endpoint {
             return "&q=\(city)&units=\(unit.rawValue)"
         case let .currentUvIndex(coordinate: coordinate):
             return "&lat=\(coordinate.lat)&lon=\(coordinate.long)"
+        case let .temperatureForecast(city: city, unit: unit):
+            return "&q=\(city)&units=\(unit.rawValue)"
         }
     }
 }

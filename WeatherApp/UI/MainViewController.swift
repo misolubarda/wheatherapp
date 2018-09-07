@@ -9,8 +9,12 @@
 import UIKit
 import DomainLayer
 
-protocol MainViewControllerDependencies: WeatherForecastViewControllerDependencies {
+protocol MainViewControllerDependencies {
     var weatherTodayUseCase: WeatherTodayUseCase { get }
+}
+
+protocol MainViewControllerDelegate: class {
+    func mainViewControllerDidTapShowForecast(cityName: String)
 }
 
 class MainViewController: UIViewController {
@@ -22,6 +26,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var humidityTextField: UITextField!
 
     private let dependencies: MainViewControllerDependencies
+    weak var delegate: MainViewControllerDelegate?
 
     init(dependencies: MainViewControllerDependencies) {
         self.dependencies = dependencies
@@ -31,9 +36,8 @@ class MainViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) { return nil }
     
     @IBAction func showForecast(_ sender: UIButton) {
-        guard let cityName = cityTextField.text else { return }
-        let weatherVc = WeatherForecastViewController(cityName: cityName, dependencies: dependencies)
-        show(weatherVc, sender: self)
+        guard let cityName = cityTextField.text, !cityName.isEmpty else { return }
+        delegate?.mainViewControllerDidTapShowForecast(cityName: cityName)
     }
     
     @IBAction func submitCity(_ sender: UIButton) {

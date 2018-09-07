@@ -10,7 +10,7 @@ import Foundation
 import DomainLayer
 import DataLayer
 
-class AppDependenciesContainter: MainViewControllerDependencies, WeatherForecastViewControllerDependencies {
+class AppDependenciesContainter: AppCoordinatorDependencies {
     let weatherTodayUseCase: WeatherTodayUseCase = WeatherTodayUseCase(weatherProvider: CurrentWeatherProvider(), uvIndexProvider: CurrentUvIndexProvider())
     let forecastUseCase: Forecast5DayUseCase = Forecast5DayUseCase(provider: OWMTemperatureForecast())
 }

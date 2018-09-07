@@ -9,6 +9,10 @@
 import UIKit
 import DomainLayer
 
+protocol MainViewControllerDependencies: WeatherForecastViewControllerDependencies {
+    var weatherTodayUseCase: WeatherTodayUseCase { get }
+}
+
 class MainViewController: UIViewController {
     @IBOutlet weak var temperatureTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
@@ -17,25 +21,25 @@ class MainViewController: UIViewController {
     @IBOutlet weak var minTempTextField: UITextField!
     @IBOutlet weak var humidityTextField: UITextField!
 
-    @IBOutlet weak var barChartView: BarChartView!
+    private let dependencies: MainViewControllerDependencies
 
-    private let weatherTodayUseCase: WeatherTodayUseCase
-    private let forecastUseCase: Forecast5DayUseCase
-
-    init(weatherTodayUseCase: WeatherTodayUseCase, forecastUseCase: Forecast5DayUseCase) {
-        self.weatherTodayUseCase = weatherTodayUseCase
-        self.forecastUseCase = forecastUseCase
+    init(dependencies: MainViewControllerDependencies) {
+        self.dependencies = dependencies
         super.init(nibName: nil, bundle: nil)
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    required init?(coder aDecoder: NSCoder) { return nil }
+    
+    @IBAction func showForecast(_ sender: UIButton) {
+        guard let cityName = cityTextField.text else { return }
+        let weatherVc = WeatherForecastViewController(cityName: cityName, dependencies: dependencies)
+        show(weatherVc, sender: self)
     }
-
+    
     @IBAction func submitCity(_ sender: UIButton) {
         guard let cityName = cityTextField.text else { return }
 
-        weatherTodayUseCase.execute(city: cityName) { [weak self] response in
+        dependencies.weatherTodayUseCase.execute(city: cityName) { [weak self] response in
             switch response {
             case let .success(weatherToday):
                 self?.updateUI(with: weatherToday)
@@ -44,14 +48,6 @@ class MainViewController: UIViewController {
             }
         }
 
-        forecastUseCase.execute(city: cityName) { [weak self] response in
-            switch response {
-            case let .success(forecast):
-                self?.barChartView.update(with: forecast.temperatures)
-            case let .error(error):
-                print(error)
-            }
-        }
     }
 
     func updateUI(with weatherToday: WeatherToday) {

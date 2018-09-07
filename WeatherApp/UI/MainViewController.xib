@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="WeatherApp" customModuleProvider="target">
             <connections>
-                <outlet property="barChartView" destination="9Oa-le-Uaz" id="Jv3-Gl-vzN"/>
                 <outlet property="cityTextField" destination="ffj-0I-z3n" id="G4B-Sv-Y2V"/>
                 <outlet property="humidityTextField" destination="dDC-sz-sfv" id="ZIN-xB-hpJ"/>
                 <outlet property="maxTempTextField" destination="ASz-Z6-6bq" id="Lhm-F4-4sN"/>
@@ -151,22 +150,21 @@ TWF4IHRlbQhwOg
                         <action selector="submitCity:" destination="-1" eventType="touchUpInside" id="sns-Ie-aoI"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Oa-le-Uaz" customClass="BarChartView" customModule="WeatherApp" customModuleProvider="target">
-                    <rect key="frame" x="16" y="315" width="343" height="190"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="190" id="olh-0X-kNu"/>
-                    </constraints>
-                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSK-ZB-47J">
+                    <rect key="frame" x="138.5" y="324" width="98" height="30"/>
+                    <state key="normal" title="Show forecast"/>
+                    <connections>
+                        <action selector="showForecast:" destination="-1" eventType="touchUpInside" id="zwQ-Ab-F38"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="tSK-ZB-47J" firstAttribute="centerX" secondItem="ugb-6A-WID" secondAttribute="centerX" id="6BF-gJ-20o"/>
                 <constraint firstItem="8U9-26-RrO" firstAttribute="top" secondItem="ugb-6A-WID" secondAttribute="top" constant="31" id="6uU-gQ-f0l"/>
-                <constraint firstItem="9Oa-le-Uaz" firstAttribute="leading" secondItem="8U9-26-RrO" secondAttribute="leading" id="BgT-u1-InK"/>
+                <constraint firstItem="tSK-ZB-47J" firstAttribute="top" secondItem="8U9-26-RrO" secondAttribute="bottom" constant="17.5" id="95Y-js-Iau"/>
                 <constraint firstItem="JDN-1Q-O9e" firstAttribute="centerX" secondItem="ugb-6A-WID" secondAttribute="centerX" id="Zm5-cr-g7M"/>
                 <constraint firstItem="8U9-26-RrO" firstAttribute="leading" secondItem="ugb-6A-WID" secondAttribute="leading" constant="16" id="baQ-qU-eGa"/>
-                <constraint firstItem="9Oa-le-Uaz" firstAttribute="top" secondItem="8U9-26-RrO" secondAttribute="bottom" constant="8" symbolic="YES" id="eoB-SL-dVk"/>
-                <constraint firstItem="9Oa-le-Uaz" firstAttribute="trailing" secondItem="8U9-26-RrO" secondAttribute="trailing" id="fH1-TQ-g8g"/>
                 <constraint firstItem="ugb-6A-WID" firstAttribute="trailing" secondItem="8U9-26-RrO" secondAttribute="trailing" constant="16" id="gMi-uP-eXr"/>
                 <constraint firstItem="ugb-6A-WID" firstAttribute="bottom" secondItem="JDN-1Q-O9e" secondAttribute="bottom" constant="13" id="uda-0v-1KP"/>
             </constraints>

@@ -8,13 +8,14 @@
 
 import UIKit
 import DomainLayer
+import Charts
 
 protocol WeatherForecastViewControllerDependencies {
     var forecastUseCase: Forecast5DayUseCase { get }
 }
 
 class WeatherForecastViewController: UIViewController {
-    @IBOutlet weak var barChartView: UIView!
+    @IBOutlet weak var barChartView: BarChartView!
     
     private let dependencies: WeatherForecastViewControllerDependencies
     private let cityName: String
@@ -30,13 +31,26 @@ class WeatherForecastViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dependencies.forecastUseCase.execute(city: cityName) { response in
+        dependencies.forecastUseCase.execute(city: cityName) { [weak self] response in
             switch response {
-            case .success:
-                break
+            case let .success(forecast):
+                self?.barChartView.data = forecast.barChartData
             case let .error(error):
                 print(error)
             }
         }
+    }
+}
+
+// MARK: BarChartData extension
+
+private extension Forecast5Day {
+    var barChartData: BarChartData {
+        let values = self.temperatures.enumerated().map { (offset, temperature) -> BarChartDataEntry in
+            return BarChartDataEntry(x: Double(offset), y: temperature)
+        }
+        let dataSet = BarChartDataSet(values: values, label: "Temperature")
+        let data = BarChartData(dataSet: dataSet)
+        return data
     }
 }

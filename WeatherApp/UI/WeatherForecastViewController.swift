@@ -14,7 +14,7 @@ protocol WeatherForecastViewControllerDependencies {
 }
 
 class WeatherForecastViewController: UIViewController {
-    @IBOutlet weak var barChartView: BarChartView!
+    @IBOutlet weak var barChartView: UIView!
     
     private let dependencies: WeatherForecastViewControllerDependencies
     private let cityName: String
@@ -30,10 +30,10 @@ class WeatherForecastViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dependencies.forecastUseCase.execute(city: cityName) { [weak self] response in
+        dependencies.forecastUseCase.execute(city: cityName) { response in
             switch response {
-            case let .success(forecast):
-                self?.barChartView.update(with: forecast.temperatures)
+            case .success:
+                break
             case let .error(error):
                 print(error)
             }

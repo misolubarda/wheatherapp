@@ -35,6 +35,11 @@ class MainViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) { return nil }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     @IBAction func showForecast(_ sender: UIButton) {
         guard let cityName = cityTextField.text, !cityName.isEmpty else { return }
         delegate?.mainViewControllerDidTapShowForecast(cityName: cityName)

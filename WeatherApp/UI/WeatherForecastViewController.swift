@@ -26,6 +26,11 @@ class WeatherForecastViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     required init?(coder aDecoder: NSCoder) { return nil }
 
     override func viewDidLoad() {

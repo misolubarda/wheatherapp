@@ -14,7 +14,7 @@ protocol AppCoordinatorDependencies: MainViewControllerDependencies, WeatherFore
 class AppCoordinator {
     private let dependencies: AppCoordinatorDependencies
     private let window: UIWindow
-    
+    private let navVC = UINavigationController()
     init(dependencies: AppCoordinatorDependencies) {
         self.dependencies = dependencies
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -23,13 +23,14 @@ class AppCoordinator {
     func start() {
         let mainViewController = MainViewController(dependencies: dependencies)
         mainViewController.delegate = self
-        window.rootViewController = mainViewController
+        window.rootViewController = navVC
+        navVC.viewControllers = [mainViewController]
         window.makeKeyAndVisible()
     }
     
     func openWeatherForecast(cityName: String) {
         let weatherVc = WeatherForecastViewController(cityName: cityName, dependencies: dependencies)
-        window.rootViewController = weatherVc
+        navVC.pushViewController(weatherVc, animated: true)
     }
 }
 

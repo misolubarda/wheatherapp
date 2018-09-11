@@ -15,6 +15,7 @@ class AppCoordinator {
     private let dependencies: AppCoordinatorDependencies
     private let window: UIWindow
     private let navVC = UINavigationController()
+    
     init(dependencies: AppCoordinatorDependencies) {
         self.dependencies = dependencies
         window = UIWindow(frame: UIScreen.main.bounds)

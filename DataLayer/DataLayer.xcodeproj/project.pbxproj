@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6564DB972146A7F8000E8663 /* CurrentUserLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6564DB962146A7F8000E8663 /* CurrentUserLocationProvider.swift */; };
 		9A25EB0721288C9B009A2781 /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A25EB0221288C9B009A2781 /* EndpointTests.swift */; };
 		9A25EB0821288C9B009A2781 /* ResultFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A25EB0421288C9B009A2781 /* ResultFake.swift */; };
 		9A25EB0921288C9B009A2781 /* NetworkSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A25EB0521288C9B009A2781 /* NetworkSessionFake.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6564DB962146A7F8000E8663 /* CurrentUserLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserLocationProvider.swift; sourceTree = "<group>"; };
 		9A25EB0221288C9B009A2781 /* EndpointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		9A25EB0421288C9B009A2781 /* ResultFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultFake.swift; sourceTree = "<group>"; };
 		9A25EB0521288C9B009A2781 /* NetworkSessionFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSessionFake.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				9AB82F822118A6F700DF359A /* CurrentUvIndexProvider.swift */,
 				9AB82F842118A6F700DF359A /* CurrentWeatherProvider.swift */,
 				9A81001F2138512D001520DE /* OWMTemperatureForecast.swift */,
+				6564DB962146A7F8000E8663 /* CurrentUserLocationProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6564DB972146A7F8000E8663 /* CurrentUserLocationProvider.swift in Sources */,
 				9A8100202138512D001520DE /* OWMTemperatureForecast.swift in Sources */,
 				9AB82F8E2118A6F700DF359A /* WebService.swift in Sources */,
 				9AB82F902118A6F700DF359A /* Request.swift in Sources */,

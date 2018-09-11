@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6564DB9321469BB5000E8663 /* UserLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6564DB9221469BB5000E8663 /* UserLocationProvider.swift */; };
+		6564DB952146A63E000E8663 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6564DB942146A63E000E8663 /* UserLocation.swift */; };
 		9A81001C21384ACC001520DE /* TemperatureForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A81001B21384ACC001520DE /* TemperatureForecast.swift */; };
 		9A81001E2138509B001520DE /* TemperatureForecastProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A81001D2138509B001520DE /* TemperatureForecastProvider.swift */; };
 		9A810022213852EC001520DE /* Forecast5DayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A810021213852EC001520DE /* Forecast5DayUseCase.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6564DB9221469BB5000E8663 /* UserLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationProvider.swift; sourceTree = "<group>"; };
+		6564DB942146A63E000E8663 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		9A81001B21384ACC001520DE /* TemperatureForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureForecast.swift; sourceTree = "<group>"; };
 		9A81001D2138509B001520DE /* TemperatureForecastProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureForecastProvider.swift; sourceTree = "<group>"; };
 		9A810021213852EC001520DE /* Forecast5DayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast5DayUseCase.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				9AB82F982118A7C300DF359A /* WeatherProvider.swift */,
 				9AB82FA62118A8E400DF359A /* UvIndexProvider.swift */,
 				9A81001D2138509B001520DE /* TemperatureForecastProvider.swift */,
+				6564DB9221469BB5000E8663 /* UserLocationProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				9AB82FA02118A8B100DF359A /* CurrentWeather.swift */,
 				9AB82FA12118A8B100DF359A /* CurrentUvIndex.swift */,
 				9A81001B21384ACC001520DE /* TemperatureForecast.swift */,
+				6564DB942146A63E000E8663 /* UserLocation.swift */,
 			);
 			path = Output;
 			sourceTree = "<group>";
@@ -283,7 +289,9 @@
 				9A81001E2138509B001520DE /* TemperatureForecastProvider.swift in Sources */,
 				9AB82F542118A23600DF359A /* WeatherTodayAdapter.swift in Sources */,
 				9AB82F552118A23600DF359A /* WeatherTodayUseCase.swift in Sources */,
+				6564DB9321469BB5000E8663 /* UserLocationProvider.swift in Sources */,
 				9AB82FA72118A8E400DF359A /* UvIndexProvider.swift in Sources */,
+				6564DB952146A63E000E8663 /* UserLocation.swift in Sources */,
 				9A81001C21384ACC001520DE /* TemperatureForecast.swift in Sources */,
 				9A810022213852EC001520DE /* Forecast5DayUseCase.swift in Sources */,
 				9AB82FA42118A8B100DF359A /* CurrentWeather.swift in Sources */,

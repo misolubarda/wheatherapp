@@ -11,25 +11,55 @@ import DomainLayer
 import CoreLocation
 
 public class CurrentUserLocationProvider:  NSObject, UserLocationProvider, CLLocationManagerDelegate {
-    let locationManager = CLLocationManager()
+    private let locationManager = CLLocationManager()
+    private var completion: ((Response<UserLocation>) -> Void)?
     
-    func userAuthorization() {
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
+
+    private var isLocationServiceEnabled: Bool  {
+        return CLLocationManager.locationServicesEnabled()
+    }
+    
+    private func requestAuthorizationIfNeeded() -> Bool {
+        locationManager.delegate = self
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+            self.locationManager.requestWhenInUseAuthorization()
+            return true
+        }
+        return false
+    }
+    
+    private func requestLocation() {
+        locationManager.startUpdatingLocation()
+    }
+    
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            requestLocation()
+        } else if status == .denied || status == .restricted {
+            completion?(.error(LocationError.locationServiceDisabled))
+            completion = nil
         }
     }
     
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let latitude = locations.first?.coordinate.latitude else { return }
+        guard let longitude = locations.first?.coordinate.longitude else { return }
+        let finalLocation = UserLocation(latitude: latitude, longitude: longitude)
+        completion?(Response.success(finalLocation))
+        completion = nil
+        return
+    }
+    
     public func fetchLocation(completion: @escaping (Response<UserLocation>) -> Void) {
-        guard let location = locationManager.userLocation else {
-            completion(.error(LocationError.locationUnavailable))
+        guard isLocationServiceEnabled else {
+            completion(.error(LocationError.locationServiceDisabled))
             return
         }
-        completion(.success(location))
+        if !requestAuthorizationIfNeeded()  {
+            requestLocation()
+        }
+        self.completion = completion
     }
 }
 
@@ -41,5 +71,5 @@ private extension CLLocationManager {
 }
 
 public enum LocationError: Error {
-    case locationUnavailable
+    case locationServiceDisabled, locationUnavailable
 }

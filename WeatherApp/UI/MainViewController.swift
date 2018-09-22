@@ -26,10 +26,12 @@ class MainViewController: UIViewController {
     @IBOutlet weak var humidityTextField: UITextField!
 
     private let dependencies: MainViewControllerDependencies
+    private let location: UserLocation?
     weak var delegate: MainViewControllerDelegate?
 
-    init(dependencies: MainViewControllerDependencies) {
+    init(dependencies: MainViewControllerDependencies, location: UserLocation?) {
         self.dependencies = dependencies
+        self.location = location
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,6 +40,16 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        guard let location = location else { return }
+        self.dependencies.weatherTodayUseCase.execute(with: location)  { response in
+            switch response {
+            case .success(let weatherToday):
+                self.updateUI(with: weatherToday)
+            case .error(let error):
+                print(error)
+            }
+        }
     }
     
     @IBAction func showForecast(_ sender: UIButton) {
@@ -48,11 +60,11 @@ class MainViewController: UIViewController {
     @IBAction func submitCity(_ sender: UIButton) {
         guard let cityName = cityTextField.text else { return }
 
-        dependencies.weatherTodayUseCase.execute(city: cityName) { [weak self] response in
+        dependencies.weatherTodayUseCase.execute(with: cityName) { [weak self] response in
             switch response {
-            case let .success(weatherToday):
+            case .success(let weatherToday):
                 self?.updateUI(with: weatherToday)
-            case let .error(error):
+            case .error(let error):
                 print(error)
             }
         }

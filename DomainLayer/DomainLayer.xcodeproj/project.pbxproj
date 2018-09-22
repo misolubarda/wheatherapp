@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651975C92152A34E00EFDF4B /* WeatherProviderUsingLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651975C82152A34E00EFDF4B /* WeatherProviderUsingLocation.swift */; };
 		6564DB9321469BB5000E8663 /* UserLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6564DB9221469BB5000E8663 /* UserLocationProvider.swift */; };
 		6564DB952146A63E000E8663 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6564DB942146A63E000E8663 /* UserLocation.swift */; };
 		9A81001C21384ACC001520DE /* TemperatureForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A81001B21384ACC001520DE /* TemperatureForecast.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		651975C82152A34E00EFDF4B /* WeatherProviderUsingLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProviderUsingLocation.swift; sourceTree = "<group>"; };
 		6564DB9221469BB5000E8663 /* UserLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationProvider.swift; sourceTree = "<group>"; };
 		6564DB942146A63E000E8663 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		9A81001B21384ACC001520DE /* TemperatureForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureForecast.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				9AB82F982118A7C300DF359A /* WeatherProvider.swift */,
+				651975C82152A34E00EFDF4B /* WeatherProviderUsingLocation.swift */,
 				9AB82FA62118A8E400DF359A /* UvIndexProvider.swift */,
 				9A81001D2138509B001520DE /* TemperatureForecastProvider.swift */,
 				6564DB9221469BB5000E8663 /* UserLocationProvider.swift */,
@@ -293,6 +296,7 @@
 				9AB82FA72118A8E400DF359A /* UvIndexProvider.swift in Sources */,
 				6564DB952146A63E000E8663 /* UserLocation.swift in Sources */,
 				9A81001C21384ACC001520DE /* TemperatureForecast.swift in Sources */,
+				651975C92152A34E00EFDF4B /* WeatherProviderUsingLocation.swift in Sources */,
 				9A810022213852EC001520DE /* Forecast5DayUseCase.swift in Sources */,
 				9AB82FA42118A8B100DF359A /* CurrentWeather.swift in Sources */,
 				9AB82F4B2118A23600DF359A /* Response.swift in Sources */,

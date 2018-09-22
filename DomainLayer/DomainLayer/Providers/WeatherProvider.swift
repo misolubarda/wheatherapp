@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol WeatherProvider {
-    func fetch(forCity city: String, unit: TemperatureUnit, completion: @escaping (Response<CurrentWeather>) -> Void)
+    func fetch(for city: String, unit: TemperatureUnit, completion: @escaping (Response<CurrentWeather>) -> Void)
 }

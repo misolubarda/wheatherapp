@@ -13,6 +13,7 @@ enum Endpoint {
     case currentWeather(city: String, unit: TemperatureUnit)
     case temperatureForecast(city: String, unit: TemperatureUnit)
     case currentUvIndex(coordinate: Coordinate)
+    case currentWeatherWithLocation(location: UserLocation)
 
     var path: String {
         switch self {
@@ -22,6 +23,8 @@ enum Endpoint {
             return "uvi"
         case .temperatureForecast:
             return "forecast"
+        case .currentWeatherWithLocation:
+            return "weather"
         }
     }
 
@@ -33,6 +36,8 @@ enum Endpoint {
             return "&lat=\(coordinate.lat)&lon=\(coordinate.long)"
         case let .temperatureForecast(city: city, unit: unit):
             return "&q=\(city)&units=\(unit.rawValue)"
+        case let .currentWeatherWithLocation(location: location):
+            return "&lat=\(location.latitude)&lon=\(location.longitude)"
         }
     }
 }

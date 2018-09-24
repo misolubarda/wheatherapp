@@ -15,7 +15,7 @@ protocol AppCoordinatorDependencies: MainViewControllerDependencies, WeatherFore
 class AppCoordinator {
     private let dependencies: AppCoordinatorDependencies
     private let window: UIWindow
-    private let navVC = UINavigationController()
+    private let tabVC = UITabBarController()
   
 
     init(dependencies: AppCoordinatorDependencies) {
@@ -28,31 +28,31 @@ class AppCoordinator {
         loadingVC.fetchLocation { [weak self] (response) in
             switch response {
             case .success(let location):
-                self?.openCurrentWeatherVC(location: location)
+                self?.setupTabBar(with: location)
             case .error(let error):
-                self?.openCurrentWeatherVC(location: nil)
                 print(error)
             }
         }
-        window.rootViewController = navVC
-        navVC.viewControllers = [loadingVC]
+        window.rootViewController = loadingVC
         window.makeKeyAndVisible()
     }
     
-    private func openCurrentWeatherVC(location: UserLocation?) {
-        let mainViewController = MainViewController(dependencies: dependencies, location: location)
-        mainViewController.delegate = self
-        navVC.viewControllers = [mainViewController]
+    private func setupTabBar(with location: UserLocation) {
+        window.rootViewController = tabVC
+        let currentWeatherVC = getCurrentWeatherVC(location: location)
+        let weatherForecastVC = getWeatherForecastVC(location: location)
+        tabVC.viewControllers = [currentWeatherVC, weatherForecastVC]
     }
     
-    private func openWeatherForecast(cityName: String) {
-        let weatherVc = WeatherForecastViewController(cityName: cityName, dependencies: dependencies)
-        navVC.pushViewController(weatherVc, animated: true)
+    private func getCurrentWeatherVC(location: UserLocation?) -> MainViewController {
+        let mainViewController = MainViewController(dependencies: dependencies, location: location)
+        mainViewController.tabBarItem = UITabBarItem(title: "Current Weather", image: nil, selectedImage: nil)
+        return mainViewController
     }
-}
-
-extension AppCoordinator: MainViewControllerDelegate {
-    func mainViewControllerDidTapShowForecast(cityName: String) {
-        openWeatherForecast(cityName: cityName)
+    
+    private func getWeatherForecastVC(location: UserLocation) -> WeatherForecastViewController {
+        let weatherVc = WeatherForecastViewController(cityName: "", dependencies: dependencies)
+        weatherVc.tabBarItem = UITabBarItem(title: "Forecast Bar Chart", image: nil, selectedImage: nil)
+        return weatherVc
     }
 }

@@ -13,10 +13,6 @@ protocol MainViewControllerDependencies {
     var weatherTodayUseCase: WeatherTodayUseCase { get }
 }
 
-protocol MainViewControllerDelegate: class {
-    func mainViewControllerDidTapShowForecast(cityName: String)
-}
-
 class MainViewController: UIViewController {
     @IBOutlet weak var temperatureTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
@@ -27,7 +23,6 @@ class MainViewController: UIViewController {
 
     private let dependencies: MainViewControllerDependencies
     private let location: UserLocation?
-    weak var delegate: MainViewControllerDelegate?
 
     init(dependencies: MainViewControllerDependencies, location: UserLocation?) {
         self.dependencies = dependencies
@@ -50,11 +45,6 @@ class MainViewController: UIViewController {
                 print(error)
             }
         }
-    }
-    
-    @IBAction func showForecast(_ sender: UIButton) {
-        guard let cityName = cityTextField.text, !cityName.isEmpty else { return }
-        delegate?.mainViewControllerDidTapShowForecast(cityName: cityName)
     }
     
     @IBAction func submitCity(_ sender: UIButton) {

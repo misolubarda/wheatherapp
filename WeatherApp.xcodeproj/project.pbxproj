@@ -14,6 +14,8 @@
 		6502750D2143019C0097FF49 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502750C2143019C0097FF49 /* AppCoordinator.swift */; };
 		6507F8B6214844FE000ED3BC /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6507F8B5214844FE000ED3BC /* LoadingViewController.swift */; };
 		6507F8B8214845EF000ED3BC /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6507F8B7214845EF000ED3BC /* LoadingViewController.xib */; };
+		6562EE5E215920C7009CE6E2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6562EE5D215920C7009CE6E2 /* MapViewController.swift */; };
+		65E3721C215937AC0027F4DF /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65E3721B215937AC0027F4DF /* MapView.xib */; };
 		9A0F84BB21299A3D007EF376 /* DataLayer.framework in Embed frameworks */ = {isa = PBXBuildFile; fileRef = 9AB82FA82118AAFA00DF359A /* DataLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A0F84BC21299A3D007EF376 /* DomainLayer.framework in Embed frameworks */ = {isa = PBXBuildFile; fileRef = 9AB82F572118A25600DF359A /* DomainLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A26059E2110A6C50019905A /* XCTestCaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A26059D2110A6C50019905A /* XCTestCaseExtensions.swift */; };
@@ -74,6 +76,8 @@
 		6502750C2143019C0097FF49 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		6507F8B5214844FE000ED3BC /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		6507F8B7214845EF000ED3BC /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		6562EE5D215920C7009CE6E2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		65E3721B215937AC0027F4DF /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		9A26059D2110A6C50019905A /* XCTestCaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtensions.swift; sourceTree = "<group>"; };
 		9AB82F572118A25600DF359A /* DomainLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DomainLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB82FA82118AAFA00DF359A /* DataLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,8 +186,10 @@
 		9ABEB72C21033C6100FF371B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				65E3721B215937AC0027F4DF /* MapView.xib */,
 				6507F8B5214844FE000ED3BC /* LoadingViewController.swift */,
 				6507F8B7214845EF000ED3BC /* LoadingViewController.xib */,
+				6562EE5D215920C7009CE6E2 /* MapViewController.swift */,
 				9ABEB72A21033C1300FF371B /* MainViewController.swift */,
 				9AB82FAD2118AF6B00DF359A /* MainViewController.xib */,
 				650275082142F9920097FF49 /* WeatherForecastViewController.swift */,
@@ -292,14 +298,16 @@
 				TargetAttributes = {
 					9ABEB6F62103396A00FF371B = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					9ABEB70A2103396C00FF371B = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1000;
 						TestTargetID = 9ABEB6F62103396A00FF371B;
 					};
 					9ABEB7152103396C00FF371B = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 9ABEB6F62103396A00FF371B;
 					};
 				};
@@ -332,6 +340,7 @@
 				6502750B2142F9A10097FF49 /* WeatherForecastViewController.xib in Resources */,
 				9ABEB7052103396B00FF371B /* LaunchScreen.storyboard in Resources */,
 				9ABEB7022103396B00FF371B /* Assets.xcassets in Resources */,
+				65E3721C215937AC0027F4DF /* MapView.xib in Resources */,
 				6507F8B8214845EF000ED3BC /* LoadingViewController.xib in Resources */,
 				9AB82FAE2118AF6B00DF359A /* MainViewController.xib in Resources */,
 			);
@@ -439,6 +448,7 @@
 				9ABEB72B21033C1300FF371B /* MainViewController.swift in Sources */,
 				650275092142F9920097FF49 /* WeatherForecastViewController.swift in Sources */,
 				6507F8B6214844FE000ED3BC /* LoadingViewController.swift in Sources */,
+				6562EE5E215920C7009CE6E2 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,7 +623,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = OurOrg.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -631,7 +641,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = OurOrg.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -653,7 +663,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = OurOrg.WeatherAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherApp.app/WeatherApp";
 			};
@@ -675,7 +685,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = OurOrg.WeatherAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherApp.app/WeatherApp";
 			};
@@ -695,7 +705,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = OurOrg.WeatherAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = WeatherApp;
 			};
@@ -715,7 +725,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = OurOrg.WeatherAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = WeatherApp;
 			};
